@@ -1,51 +1,58 @@
 <template>
-    <v-app-bar absolute class="nav-bar" color="#121212" elevate-on-scroll>
-        <v-menu bottom offset-y>
+    <v-app-bar
+        fixed
+        class="nav-bar"
+        :class="{ 'nav-scrolled': isScrolled }"
+        elevation="0"
+    >
+        <v-menu bottom offset-y transition="slide-y-transition">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn icon v-bind="attrs" v-on="on" class="nav-bar-nav-icon">
-                <v-icon color="#c1ff02">mdi-menu</v-icon>
-              </v-btn>
+                <v-btn icon v-bind="attrs" v-on="on" class="nav-bar-nav-icon">
+                    <v-icon color="#c1ff02">mdi-menu</v-icon>
+                </v-btn>
             </template>
 
-            <v-card class="mx-auto" tile>
-                <v-list nav>
-                    <v-list-item>
-                        <a href="https://app.nott.app/" target="_blank">
-                            <v-list-item-title class="text-capitalize text-caption">
-                                <v-icon left color="#c1ff02">mdi-login</v-icon>
-                                {{ $t('global.join') }}
-                            </v-list-item-title>
-                        </a>
+            <v-card class="mobile-menu glass">
+                <v-list nav dense class="pa-2">
+                    <v-list-item class="mobile-menu-item" href="https://app.nott.app/" target="_blank">
+                        <v-icon left color="#c1ff02" size="20">mdi-rocket-launch</v-icon>
+                        <span>{{ $t('global.join') }}</span>
                     </v-list-item>
-                    <v-list-item>
-                        <a href="https://apps.apple.com/app/nott-academy/id6449980598" target="_blank">
-                            <v-list-item-title class="text-capitalize text-caption">
-                                <v-icon left color="#c1ff02">mdi-apple</v-icon>
-                                Apple Store
-                            </v-list-item-title>
-                        </a>
+                    <v-list-item class="mobile-menu-item" href="https://apps.apple.com/app/nott-academy/id6449980598" target="_blank">
+                        <v-icon left color="#c1ff02" size="20">mdi-apple</v-icon>
+                        <span>App Store</span>
                     </v-list-item>
-                    <v-list-item>
-                        <a href="https://play.google.com/store/apps/details?id=academy.nott" target="_blank">
-                            <v-list-item-title class="text-capitalize text-caption">
-                                <v-icon left color="#c1ff02">mdi-google-play</v-icon>
-                                Play Store
-                            </v-list-item-title>
-                        </a>
+                    <v-list-item class="mobile-menu-item" href="https://play.google.com/store/apps/details?id=academy.nott" target="_blank">
+                        <v-icon left color="#c1ff02" size="20">mdi-google-play</v-icon>
+                        <span>Play Store</span>
                     </v-list-item>
                 </v-list>
             </v-card>
         </v-menu>
-        
-        <nuxt-link :to="localePath({ name: 'index'})">
-            <v-img :src="require('~/assets/images/logo/icon_dark.svg')" contain width="50" height="50" class="img" /> 
+
+        <nuxt-link :to="localePath({ name: 'index'})" class="logo-link">
+            <v-img
+                :src="require('~/assets/images/logo/icon_dark.svg')"
+                contain
+                width="42"
+                height="42"
+                class="logo-img"
+            />
         </nuxt-link>
 
         <v-spacer />
 
-        <v-btn icon small @click="changeLocale" class="mr-3">
-            <v-avatar tile :size="20">
-                <v-img class="flag" :src="require(`~/assets/images/flags/${currentLocale.code}.svg`)" />
+        <v-btn
+            icon
+            small
+            @click="changeLocale"
+            class="lang-btn mr-2"
+        >
+            <v-avatar tile :size="22">
+                <v-img
+                    class="flag"
+                    :src="require(`~/assets/images/flags/${currentLocale.code}.svg`)"
+                />
             </v-avatar>
         </v-btn>
 
@@ -58,9 +65,14 @@
         components:{
             JoinButton: () => import("@/components/common/JoinButton")
         },
+        data() {
+            return {
+                isScrolled: false
+            }
+        },
         computed: {
             currentLocale() {
-              return this.$i18n.locales.find((i) => i.code === this.$i18n.locale);
+                return this.$i18n.locales.find((i) => i.code === this.$i18n.locale);
             },
         },
         methods: {
@@ -70,90 +82,156 @@
                 localStorage.setItem("locale", code);
                 this.$vuetify.lang.current = code;
             },
+            handleScroll() {
+                this.isScrolled = window.scrollY > 50;
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        beforeDestroy() {
+            window.removeEventListener('scroll', this.handleScroll);
         }
     }
 </script>
 
 <style lang="scss" scoped>
-.nav-bar{
-    background-color: #121212;
-    color: white;
-    padding: 1rem 4rem;
+.nav-bar {
+    background: transparent !important;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    padding: 1rem 2rem;
+    min-height: 72px !important;
+    height: 72px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid transparent;
 
-    .img {
-        margin-left: 3rem;
+    &.nav-scrolled {
+        background: rgba(10, 10, 15, 0.8) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.logo-img {
+    margin-left: 1rem;
 }
 
 .nav-bar-nav-icon {
     display: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: rgba(193, 255, 2, 0.1) !important;
+    }
 }
-.nav-title {
-    text-transform: uppercase;
+
+.lang-btn {
+    transition: all 0.3s ease;
+    border-radius: 50%;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+        transform: scale(1.1);
+    }
+
+    .flag {
+        border-radius: 4px;
+    }
+}
+
+.mobile-menu {
+    background: rgba(15, 15, 25, 0.95) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px !important;
+    overflow: hidden;
+    min-width: 200px;
+}
+
+.mobile-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin: 4px 0;
+    transition: all 0.2s ease;
     font-family: 'Inter', sans-serif;
+    font-size: 14px;
     font-weight: 500;
-    font-size: 1rem;
-    &.login {
-        text-decoration: underline;
-        text-decoration-color: yellow;
-        text-underline-offset: 7px;
-    }
+    color: rgba(255, 255, 255, 0.8);
 
     &:hover {
-        text-decoration: none;
+        background: rgba(193, 255, 2, 0.1);
+        color: #c1ff02;
     }
 
-}
-
-.nav-btn {
-    border: 1px solid yellow;
-    border-radius: 0;
-    padding: 0.5rem 1rem;
-    margin-left: 1rem;
-    background-color: yellow;
-    color: black;
-}
-
-.nav-btn-border{
-    border: 1px solid yellow !important;
-    border-radius: 20px !important;
-    padding: 0.5rem 1rem;
-    margin-left: 1rem;
-    background-color: transparent;
-    text-transform: capitalize;
-    color: white;
-    font-weight: 500;
-    font-size: 1rem;
-    &:hover {
-        background-color: yellow;
-        color: black;
+    span {
+        margin-left: 8px;
     }
 }
 
+.join-btn {
+    margin-left: 0.5rem;
+}
+
+// Desktop styles
+@media only screen and (min-width: 601px) {
+    .nav-bar {
+        padding: 1rem 4rem;
+        min-height: 80px !important;
+        height: 80px !important;
+    }
+
+    .logo-img {
+        margin-left: 2rem;
+    }
+}
+
+// Mobile styles
 @media only screen and (max-width: 600px) {
     .nav-bar-nav-icon {
-        display: block;
+        display: flex;
     }
-    
-    
+
     .nav-bar {
-        padding: 1rem 2rem;
-        a {
-            display: none;
+        padding: 0.5rem 1rem;
+
+        &.nav-scrolled {
+            padding: 0.5rem 1rem;
         }
     }
 
-    .img {
-        display: none;
+    .logo-link {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .nav-title {
-        display: none !important;
+    .logo-img {
+        margin-left: 0;
+        width: 36px !important;
+        height: 36px !important;
     }
-    
 
     .join-btn {
         display: none;
+    }
+
+    .lang-btn {
+        margin-right: 0 !important;
     }
 }
 </style>

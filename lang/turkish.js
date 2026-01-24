@@ -8,12 +8,29 @@ export default {
   },
   sections: {
     main: {
-      signup: 'Buradan Kaydol'
+      signup: 'Buradan Kaydol',
+      subtitle: 'Bizimle notlarını al ve sat. Paradan tasarruf eden ve notlarını yükselten binlerce öğrenciye katıl.',
+      get_started: 'Ücretsiz Başla',
+      learn_more: 'Daha Fazla',
+      users: 'Kullanıcı',
+      rating: 'Puan',
+      universities: 'Üniversite',
+      eco_friendly: 'Çevre Dostu',
+      notes_count: '10K+ Not',
+      your_notes: 'Senin Notların, Senin Başarın',
+      scroll_explore: 'Keşfetmek için kaydır'
     },
     supporter: {
       title: 'Destekleyenler',
+      stats: {
+        trees_saved: 'Ağaç Kurtarıldı',
+        notes_shared: 'Not Paylaşıldı',
+        universities: 'Üniversite'
+      }
     },
     why: {
+      section_title: 'Neden',
+      section_subtitle: 'Öğrencilerin bilgi paylaşma ve erişme biçimini nasıl devrimleştirdiğimizi keşfedin.',
       what: {
         title: 'Ne',
         subtitle: 'Yapıyoruz',
@@ -22,12 +39,14 @@ export default {
       why: {
         title: 'Neden',
         subtitle: 'Yapıyoruz',
-        description: 'Her yıl 180.000 ağaç kurban ediliyor not değişimleri için, işte bu yüzden daha sürdürülebilir ve dijital bir çözüm bulduk.'
+        description: 'Her yıl 180.000 ağaç kurban ediliyor not değişimleri için, işte bu yüzden daha sürdürülebilir ve dijital bir çözüm bulduk.',
+        trees_saved: 'Yıllık kurtarılan ağaç'
       },
       who: {
         title: 'Kim',
         subtitle: 'İçin yapıyoruz',
-        description: 'Daha iyi bir profesyonel gelecek için not satıp almak isteyen üniversite ve kolej öğrencileri için - her sınıfa uygundur.'
+        description: 'Daha iyi bir profesyonel gelecek için not satıp almak isteyen üniversite ve kolej öğrencileri için - her sınıfa uygundur.',
+        join_students: '10K+ öğrenciye katıl'
       }
     },
     contact: {
@@ -37,14 +56,37 @@ export default {
       distance_sales_contract: "Mesafeli Satış Sözleşmesi",
       privacy_policy: "Gizlilik Politikası",
       return_policy: "İade ve İptal Politikası",
+      download_appstore: 'İndir',
+      appstore: 'App Store',
+      get_googleplay: 'İndir',
+      googleplay: 'Google Play',
+      open_browser: 'Aç',
+      browser: 'Tarayıcı',
+      brand_tagline: 'Yeşil düşün, akıllı çalış. Eğitim içeriklerini paylaşmanın ve erişmenin sürdürülebilir yolu.',
+      company: 'Şirket',
+      legal: 'Yasal',
+      contact_title: 'İletişim',
+      copyright: 'Nott App. Tüm hakları saklıdır.',
+      eco_badge: 'Çevre dostu platform'
     },
     envoy: {
       title: 'Sende Nott Elçisi Olmak İster Misin?',
+      badge: 'Elçi Programı',
+      section_title: 'Bir',
+      section_title_highlight: 'Nott',
+      section_title_end: 'Elçisi Ol',
+      benefits: {
+        commission: 'Komisyon Kazan',
+        rewards: 'Özel Ödüller',
+        community: 'Topluluğa Katıl'
+      },
       form: {
         join: 'Sende Bize Katıl, Elçi Ol!',
         join_text: 'Elçi olmak için aşağıdaki formu doldurun.',
         success: 'Nott App Elçi başvurunuz başarıyla gönderildi.',
-        error: 'Başvurunuzu gönderirken bir hata oluştu.'
+        error: 'Başvurunuzu gönderirken bir hata oluştu.',
+        apply_now: 'Şimdi Başvur',
+        watch_video: 'Tanıtım videosunu izle'
       },
       label: {
         name: 'Ad Soyad',
@@ -57,6 +99,9 @@ export default {
   faq: {
     title: 'Sıkça Sorulan',
     subtitle: 'Sorular',
+    section_subtitle: 'Nott hakkında bilmeniz gereken her şey',
+    show_more: 'Daha Fazla Göster',
+    show_less: 'Daha Az Göster',
     1: {
       title: "Ne satabilirim?",
       subtitle: "Akademik notlar, ders özetleri veya kendi oluşturduğunuz eğitim materyallerini satabilirsiniz.",

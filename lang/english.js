@@ -8,12 +8,29 @@ export default {
   },
   sections: {
     main: {
-      signup: 'Sign up from here'
+      signup: 'Sign up from here',
+      subtitle: 'Buy and sell notes with us. Join thousands of students saving money and boosting grades.',
+      get_started: 'Get Started Free',
+      learn_more: 'Learn More',
+      users: 'Users',
+      rating: 'Rating',
+      universities: 'Universities',
+      eco_friendly: 'Eco-Friendly',
+      notes_count: '10K+ Notes',
+      your_notes: 'Your Notes, Your Success',
+      scroll_explore: 'Scroll to explore'
     },
     supporter: {
-      title: 'Supporters of'
+      title: 'Supporters of',
+      stats: {
+        trees_saved: 'Trees Saved',
+        notes_shared: 'Notes Shared',
+        universities: 'Universities'
+      }
     },
     why: {
+      section_title: 'Why',
+      section_subtitle: 'Discover how we\'re revolutionizing the way students share and access knowledge.',
       what: {
         title: 'What',
         subtitle: 'We do',
@@ -22,14 +39,14 @@ export default {
       why: {
         title: 'Why',
         subtitle: 'We do it',
-        description: 'Every year 180,000 trees are sacrificed for notes’ exchanges, that’s why we came up with a more sustainable & digitalized solution.'
-        // description: 'Because we believe that education should be accessible to everyone and that knowledge should be shared and not kept secret.'
+        description: "Every year 180,000 trees are sacrificed for notes' exchanges, that's why we came up with a more sustainable & digitalized solution.",
+        trees_saved: 'Trees saved yearly'
       },
       who: {
         title: 'Who',
         subtitle: 'We do it for',
-        description: 'For university & college students who wants to sell & buy notes for a better professional future - it is for every grade.'
-        // description: 'We are a group of passionate students who want to make a change in the world.'
+        description: 'For university & college students who wants to sell & buy notes for a better professional future - it is for every grade.',
+        join_students: 'Join 10K+ students'
       }
     },
     contact: {
@@ -39,14 +56,37 @@ export default {
       distance_sales_contract: "Distance Sales Contract",
       privacy_policy: "Privacy Policy",
       return_policy: "Return and Cancellation Policy",
+      download_appstore: 'Download on the',
+      appstore: 'App Store',
+      get_googleplay: 'Get it on',
+      googleplay: 'Google Play',
+      open_browser: 'Open in',
+      browser: 'Browser',
+      brand_tagline: 'Think green, Study smart. The sustainable way to share and access educational content.',
+      company: 'Company',
+      legal: 'Legal',
+      contact_title: 'Contact',
+      copyright: 'Nott App. All rights reserved.',
+      eco_badge: 'Eco-friendly platform'
     },
     envoy: {
       title: 'Do You Want to Be a Nott App Ambassador?',
+      badge: 'Ambassador Program',
+      section_title: 'Become a',
+      section_title_highlight: 'Nott',
+      section_title_end: 'Ambassador',
+      benefits: {
+        commission: 'Earn Commission',
+        rewards: 'Exclusive Rewards',
+        community: 'Join Community'
+      },
       form: {
         join: 'Join Us, Be an Ambassador!',
         join_text: 'Fill out the form below to become an ambassador.',
         success: 'Your Nott App Ambassador application has been sent successfully.',
         error: 'An error occurred while sending your application.',
+        apply_now: 'Apply Now',
+        watch_video: 'Watch intro video'
       },
       label: {
         name: 'Full Name',
@@ -59,6 +99,9 @@ export default {
   faq: {
     title: 'Frequently Asked',
     subtitle: 'Questions',
+    section_subtitle: 'Everything you need to know about Nott',
+    show_more: 'Show More',
+    show_less: 'Show Less',
     1: {
       title: "What can I sell?",
       subtitle: "You can sell academic notes, lecture summaries, or educational materials you've created."
