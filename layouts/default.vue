@@ -2,6 +2,7 @@
   <v-app dark>
     <v-main class="main-content">
       <Navbar />
+      <span id="top"></span>
       <div class="page-container">
         <Nuxt />
       </div>
@@ -21,14 +22,14 @@ export default {
 
 <style lang="scss">
 .main-content {
-  background-color: #0a0a0f !important;
+  background-color: var(--bg) !important;
   min-height: 100vh;
 }
 
 .page-container {
   position: relative;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 // Override Vuetify container for full-width sections
@@ -48,7 +49,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -58,16 +59,5 @@ html {
   &:hover {
     background: rgba(193, 255, 2, 0.5);
   }
-}
-
-// Selection color
-::selection {
-  background: rgba(193, 255, 2, 0.3);
-  color: #fff;
-}
-
-::-moz-selection {
-  background: rgba(193, 255, 2, 0.3);
-  color: #fff;
 }
 </style>

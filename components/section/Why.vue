@@ -1,442 +1,271 @@
 <template>
-  <div id="why-section" class="why-section section-padding">
-    <div class="section-header">
-      <h2 class="section-title">
-        {{ $t('sections.why.section_title') }} <span class="gradient-text">Nott</span>?
-      </h2>
-      <p class="section-subtitle">
-        {{ $t('sections.why.section_subtitle') }}
-      </p>
-    </div>
-
-    <div class="bento-grid">
-      <div class="bento-item bento-large" @mouseenter="activeCard = 1" @mouseleave="activeCard = null">
-        <div class="bento-card">
-          <div class="card-icon">
-            <v-icon size="48" color="#c1ff02">mdi-lightbulb-outline</v-icon>
-          </div>
-          <div class="card-content">
-            <div class="card-label">{{ $t('sections.why.what.title') }}</div>
-            <h3 class="card-title">{{ $t('sections.why.what.subtitle') }}</h3>
-            <p class="card-description">
-              {{ $t('sections.why.what.description') }}
-            </p>
-          </div>
-          <div class="card-decoration">
-            <div class="decoration-circle"></div>
-          </div>
-        </div>
+  <section class="section sec-pad" id="why">
+    <div class="wrap">
+      <div class="sec-head center" v-reveal>
+        <div class="eyebrow">{{ $t('sections.why.eyebrow') }}</div>
+        <h2 class="display sec-title">{{ $t('sections.why.section_title') }} <span class="neon-text">Nott</span>?</h2>
+        <div class="title-rule"></div>
+        <p class="sec-sub">{{ $t('sections.why.section_subtitle') }}</p>
       </div>
 
-      <div class="bento-item bento-large" @mouseenter="activeCard = 2" @mouseleave="activeCard = null">
-        <div class="bento-card">
-          <div class="card-icon">
-            <v-icon size="48" color="#c1ff02">mdi-leaf</v-icon>
-          </div>
-          <div class="card-content">
-            <div class="card-label">{{ $t('sections.why.why.title') }}</div>
-            <h3 class="card-title">{{ $t('sections.why.why.subtitle') }}</h3>
-            <p class="card-description">
-              {{ $t('sections.why.why.description') }}
-            </p>
-          </div>
-          <div class="card-stat">
-            <span class="stat-value">180K</span>
-            <span class="stat-label">{{ $t('sections.why.why.trees_saved') }}</span>
-          </div>
+      <div class="bento">
+        <div class="bento-card glass" v-reveal>
+          <span class="bento-ix">01</span>
+          <div class="bento-deco"></div>
+          <div class="bento-ic"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 4 10.5c-.7.7-1 1.2-1 2.5H9c0-1.3-.3-1.8-1-2.5A6 6 0 0 1 12 3z" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+          <div class="bento-label">{{ $t('sections.why.what.title') }}</div>
+          <h3 class="bento-h">{{ $t('sections.why.what.subtitle') }}</h3>
+          <p class="bento-p">{{ $t('sections.why.what.description') }}</p>
         </div>
-      </div>
 
-      <div class="bento-item bento-full" @mouseenter="activeCard = 3" @mouseleave="activeCard = null">
-        <div class="bento-card bento-card-horizontal">
-          <div class="card-left">
-            <div class="card-icon">
-              <v-icon size="48" color="#c1ff02">mdi-account-group</v-icon>
-            </div>
-            <div class="card-content">
-              <div class="card-label">{{ $t('sections.why.who.title') }}</div>
-              <h3 class="card-title">{{ $t('sections.why.who.subtitle') }}</h3>
-              <p class="card-description">
-                {{ $t('sections.why.who.description') }}
-              </p>
-            </div>
+        <div class="bento-card glass" v-reveal>
+          <span class="bento-ix">02</span>
+          <div class="bento-ic"><svg viewBox="0 0 24 24"><path d="M5 21c0-7 4-13 14-14-1 9-6 13-12 13M5 21c0-3 1-5 3-7" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+          <div class="bento-label">{{ $t('sections.why.why.title') }}</div>
+          <h3 class="bento-h">{{ $t('sections.why.why.subtitle') }}</h3>
+          <p class="bento-p">{{ $t('sections.why.why.description') }}</p>
+          <div class="bento-stat"><span class="v">180K</span><span class="l">{{ $t('sections.why.why.trees_saved') }}</span></div>
+        </div>
+
+        <div class="bento-card bento-full glass" v-reveal>
+          <div class="bento-full-copy">
+            <span class="bento-ix">03</span>
+            <div class="bento-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" /><path d="M2.5 20c.6-3.5 3-5.2 6.5-5.2 1 0 1.9.1 2.7.4M16 10.5a2.8 2.8 0 1 0-2.4-4.2M15.5 20c.3-2.4 1.6-3.9 3.6-4.4" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+            <div class="bento-label">{{ $t('sections.why.who.title') }}</div>
+            <h3 class="bento-h">{{ $t('sections.why.who.subtitle') }}</h3>
+            <p class="bento-p">{{ $t('sections.why.who.description') }}</p>
           </div>
-          <div class="card-right">
-            <div class="user-avatars">
-              <div class="avatar-stack">
-                <div class="avatar" v-for="i in 3" :key="i">
-                  <v-icon color="rgba(255,255,255,0.8)" size="20">mdi-account</v-icon>
-                </div>
-              </div>
-              <span class="avatar-text">{{ $t('sections.why.who.join_students') }}</span>
+          <div class="who-right">
+            <div class="ava-stack">
+              <div class="a"><img :src="people.womanLaptop" alt="" /></div>
+              <div class="a"><img :src="people.boyGirl" alt="" /></div>
+              <div class="a"><img :src="people.womanSmiling" alt="" /></div>
+              <div class="a more">10K+</div>
             </div>
+            <div class="cap">{{ $t('sections.why.who.join_students') }}</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      activeCard: null
+      people: {
+        womanLaptop: require('~/assets/images/people/3d-business-young-women-sitting-with-laptop-on-the-table.png'),
+        boyGirl: require('~/assets/images/people/3d-business-boy-and-girl-standing-and-laughing.png'),
+        womanSmiling: require('~/assets/images/people/3d-business-young-women-standing-and-smiling.png'),
+      }
     }
-  },
-  mounted() {
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('animate-in');
-          }, index * 150);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.bento-item').forEach(item => {
-      observer.observe(item);
-    });
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.why-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.section-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 2.5rem;
-  }
-}
-
-.section-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-// Bento Grid Layout
-.bento-grid {
+.bento {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-
-  @media only screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.bento-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  &.bento-large {
-    min-height: 320px;
-  }
-
-  &.bento-full {
-    grid-column: span 2;
-    min-height: 200px;
-
-    @media only screen and (max-width: 768px) {
-      grid-column: span 1;
-    }
-  }
+  gap: 20px;
 }
 
 .bento-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 2rem;
-  height: 100%;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
   position: relative;
+  border-radius: var(--r-lg);
+  padding: 34px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s, box-shadow 0.4s;
 
-  &::before {
+  &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at top right, rgba(193, 255, 2, 0.08), transparent 50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    inset: 0;
     pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(circle at top right, rgba(193, 255, 2, 0.1), transparent 55%);
+    transition: opacity 0.4s;
   }
 
   &:hover {
     transform: translateY(-8px);
-    border-color: rgba(193, 255, 2, 0.3);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    border-color: rgba(193, 255, 2, 0.32);
+    box-shadow: 0 26px 56px rgba(0, 0, 0, 0.46);
 
-    &::before {
+    &::after {
       opacity: 1;
     }
-
-    .card-icon {
-      transform: scale(1.1);
+    .bento-ic {
+      transform: scale(1.08) rotate(-4deg);
     }
-
-    .decoration-circle {
-      transform: scale(1.2);
-      opacity: 0.15;
+    .bento-deco {
+      transform: scale(1.18);
+      opacity: 0.12;
     }
   }
 }
 
-.bento-card-horizontal {
+.bento-full {
+  grid-column: span 2;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  gap: 36px;
 }
 
-.card-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.bento-full-copy {
   flex: 1;
 }
 
-.card-right {
+.bento-ix {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--mut-2);
+}
+
+.bento-ic {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: var(--neon-dim);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 22px;
+  transition: transform 0.4s;
 
-  @media only screen and (max-width: 768px) {
-    margin-top: 1.5rem;
-    width: 100%;
-    justify-content: flex-start;
+  svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--neon);
+    fill: none;
+    stroke-width: 1.6;
   }
 }
 
-.card-icon {
-  width: 80px;
-  height: 80px;
-  background: rgba(193, 255, 2, 0.1);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-content {
-  position: relative;
-  z-index: 2;
-}
-
-.card-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #c1ff02;
+.bento-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  color: var(--neon);
+  margin-bottom: 10px;
 }
 
-.card-title {
-  font-size: 1.75rem;
+.bento-h {
+  font-family: var(--font);
+  font-size: 1.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 14px;
 }
 
-.card-description {
-  font-family: 'Inter', sans-serif;
+.bento-p {
   font-size: 1rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  max-width: 400px;
+  color: var(--mut);
+  line-height: 1.65;
+  max-width: 440px;
 }
 
-// Stat element
-.card-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.bento-stat {
   margin-top: auto;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
 
-  .stat-value {
-    font-size: 2.5rem;
+  .v {
+    font-family: var(--mono);
+    font-size: 2.6rem;
     font-weight: 700;
-    color: #c1ff02;
+    color: var(--neon);
     line-height: 1;
   }
-
-  .stat-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 0.25rem;
+  .l {
+    font-size: 13px;
+    color: var(--mut);
   }
 }
 
-// Decoration
-.card-decoration {
+.bento-deco {
   position: absolute;
-  top: -50px;
-  right: -50px;
-  pointer-events: none;
-}
-
-.decoration-circle {
-  width: 200px;
-  height: 200px;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  background: #c1ff02;
-  opacity: 0.08;
-  transition: all 0.4s ease;
+  background: var(--neon);
+  opacity: 0.07;
+  transition: transform 0.5s, opacity 0.5s;
 }
 
-// Avatar stack
-.user-avatars {
+.who-right {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 16px;
+
+  .cap {
+    font-size: 13.5px;
+    color: var(--mut);
+  }
 }
 
-.avatar-stack {
+.ava-stack {
   display: flex;
-}
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(193, 255, 2, 0.2);
-  border: 2px solid rgba(10, 10, 15, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: -12px;
+  .a {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #243018, #11160c);
 
-  &:first-child {
-    margin-left: 0 !important;
+    &:first-child {
+      margin-left: 0;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    &.more {
+      background: var(--neon);
+      color: #0a0a0f;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 14px;
+    }
   }
 }
 
-.avatar-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-// Mobile
-@media only screen and (max-width: 768px) {
-  .why-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-
-  .section-header {
-    margin-bottom: 2.5rem;
-  }
-
-  .bento-grid {
+@media (max-width: 768px) {
+  .bento {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
-
-  .bento-item.bento-large {
-    min-height: auto;
-  }
-
-  .bento-item.bento-full {
+  .bento-full {
     grid-column: span 1;
-  }
-
-  .bento-card {
-    padding: 1.5rem;
-  }
-
-  .bento-card-horizontal {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .card-right {
-    margin-top: 1.5rem;
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .card-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0.75rem;
-
-    .v-icon {
-      font-size: 36px !important;
-    }
-  }
-
-  .card-title {
-    font-size: 1.35rem;
-  }
-
-  .card-description {
-    font-size: 0.9rem;
-  }
-
-  .card-stat {
-    padding-top: 1rem;
-
-    .stat-value {
-      font-size: 2rem;
-    }
-  }
-
-  .user-avatars {
+  .who-right {
     flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
+    align-self: stretch;
   }
 }
 </style>

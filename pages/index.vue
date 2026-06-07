@@ -20,7 +20,7 @@ export default {
     EnvoySection: () => import("@/components/section/Envoy"),
   },
   head() {
-    const title = `Nott - Think Green, Study Smart`;
+    const title = `Nott — Think Green, Study Smart`;
     const description = `Buy and sell notes with Nott. Join thousands of students saving money and boosting grades with sustainable digital education.`;
     return {
       title,
@@ -36,6 +36,6 @@ export default {
 
 <style lang="scss" scoped>
 .landing-page {
-  background-color: #0a0a0f;
+  background-color: var(--bg);
 }
 </style>

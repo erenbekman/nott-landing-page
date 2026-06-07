@@ -1,6 +1,9 @@
 export default {
   navbar: {
     login: 'Login',
+    why_nott: 'Why Nott',
+    ambassador: 'Ambassador',
+    faq: 'FAQ',
     signup: {
       google: 'Sign up with Google',
       apple: 'Sign up with Apple',
@@ -9,19 +12,23 @@ export default {
   sections: {
     main: {
       signup: 'Sign up from here',
-      subtitle: 'Buy and sell notes with us. Join thousands of students saving money and boosting grades.',
+      badge: 'Sustainable study marketplace',
+      subtitle: 'Buy and sell notes with us. Join thousands of students saving money and boosting their grades — the sustainable way.',
       get_started: 'Get Started Free',
       learn_more: 'Learn More',
       users: 'Users',
+      students: 'Students',
       rating: 'Rating',
+      app_rating: 'App rating',
       universities: 'Universities',
       eco_friendly: 'Eco-Friendly',
       notes_count: '10K+ Notes',
+      notes: 'Notes',
       your_notes: 'Your Notes, Your Success',
       scroll_explore: 'Scroll to explore'
     },
     supporter: {
-      title: 'Supporters of',
+      title: 'Supporters of Nott',
       stats: {
         trees_saved: 'Trees Saved',
         notes_shared: 'Notes Shared',
@@ -29,6 +36,7 @@ export default {
       }
     },
     why: {
+      eyebrow: 'The mission',
       section_title: 'Why',
       section_subtitle: 'Discover how we\'re revolutionizing the way students share and access knowledge.',
       what: {
@@ -50,6 +58,7 @@ export default {
       }
     },
     contact: {
+      cta_eyebrow: 'Save money · boost grades',
       title: 'Join us today.',
       subtitle: 'Save Money, Boost Your Grades.',
       about: "About Us",
@@ -75,10 +84,21 @@ export default {
       section_title: 'Become a',
       section_title_highlight: 'Nott',
       section_title_end: 'Ambassador',
+      intro: 'Represent Nott at your own school, grow the community, and get rewarded for every student you bring in.',
       benefits: {
         commission: 'Earn Commission',
         rewards: 'Exclusive Rewards',
-        community: 'Join Community'
+        community: 'Join the Community'
+      },
+      benefit_desc: {
+        commission: 'A cut of every note sale you drive.',
+        rewards: 'DP points, gifts and partner perks.',
+        community: 'A network of campus leaders.'
+      },
+      pill: {
+        commission: 'Commission',
+        rewards: 'Rewards',
+        community: 'Community'
       },
       form: {
         join: 'Join Us, Be an Ambassador!',
@@ -97,6 +117,7 @@ export default {
     }
   },
   faq: {
+    eyebrow: 'Everything you need to know',
     title: 'Frequently Asked',
     subtitle: 'Questions',
     section_subtitle: 'Everything you need to know about Nott',

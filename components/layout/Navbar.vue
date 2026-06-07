@@ -1,237 +1,255 @@
 <template>
-    <v-app-bar
-        fixed
-        class="nav-bar"
-        :class="{ 'nav-scrolled': isScrolled }"
-        elevation="0"
-    >
-        <v-menu bottom offset-y transition="slide-y-transition">
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-bind="attrs" v-on="on" class="nav-bar-nav-icon">
-                    <v-icon color="#c1ff02">mdi-menu</v-icon>
-                </v-btn>
-            </template>
+  <div>
+    <nav class="nav" :class="{ scrolled: isScrolled }">
+      <div class="wrap">
+        <a class="logo" href="#top" aria-label="Nott home">
+          <svg class="spark" viewBox="0 0 269 271" aria-hidden="true">
+            <polygon points="268.96,97.58 268.96,173.39 200.05,173.39 234.51,233.07 168.85,270.97 134.4,211.3 99.94,270.97 34.29,233.07 68.74,173.39 -0.16,173.39 -0.16,97.58 68.74,97.58 34.29,37.9 99.94,0 134.4,59.68 168.85,0 234.51,37.9 200.05,97.58 268.96,97.58" />
+          </svg>
+          <span class="word">nott</span>
+        </a>
 
-            <v-card class="mobile-menu glass">
-                <v-list nav dense class="pa-2">
-                    <v-list-item class="mobile-menu-item" href="https://app.nott.app/" target="_blank">
-                        <v-icon left color="#c1ff02" size="20">mdi-rocket-launch</v-icon>
-                        <span>{{ $t('global.join') }}</span>
-                    </v-list-item>
-                    <v-list-item class="mobile-menu-item" href="https://apps.apple.com/app/nott-academy/id6449980598" target="_blank">
-                        <v-icon left color="#c1ff02" size="20">mdi-apple</v-icon>
-                        <span>App Store</span>
-                    </v-list-item>
-                    <v-list-item class="mobile-menu-item" href="https://play.google.com/store/apps/details?id=academy.nott" target="_blank">
-                        <v-icon left color="#c1ff02" size="20">mdi-google-play</v-icon>
-                        <span>Play Store</span>
-                    </v-list-item>
-                </v-list>
-            </v-card>
-        </v-menu>
+        <div class="nav-right">
+          <div class="nav-links">
+            <a href="#why">{{ $t('navbar.why_nott') }}</a>
+            <a href="#ambassador">{{ $t('navbar.ambassador') }}</a>
+            <a href="#faq">{{ $t('navbar.faq') }}</a>
+          </div>
 
-        <nuxt-link :to="localePath({ name: 'index'})" class="logo-link">
-            <v-img
-                :src="require('~/assets/images/logo/icon_dark.svg')"
-                contain
-                width="42"
-                height="42"
-                class="logo-img"
-            />
-        </nuxt-link>
+          <button class="lang-pill" type="button" @click="changeLocale">
+            <span>{{ currentLocale.code.toUpperCase() }}</span>
+          </button>
 
-        <v-spacer />
+          <JoinButton class="join-desktop" :download="true" :small="true" />
 
-        <v-btn
-            icon
-            small
-            @click="changeLocale"
-            class="lang-btn mr-2"
-        >
-            <v-avatar tile :size="22">
-                <v-img
-                    class="flag"
-                    :src="require(`~/assets/images/flags/${currentLocale.code}.svg`)"
-                />
-            </v-avatar>
-        </v-btn>
+          <button class="nav-burger" type="button" aria-label="Menu" @click="sheetOpen = true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-        <JoinButton class="join-btn" :download="true" />
-    </v-app-bar>
+    <div class="m-sheet" :class="{ open: sheetOpen }" @click.self="sheetOpen = false">
+      <div class="m-panel">
+        <a class="m-row" href="https://app.nott.app/" target="_blank" rel="noopener" @click="sheetOpen = false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c1ff02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l7-14 7 14M8 14h8" /></svg>
+          {{ $t('global.join') }}
+          <button class="m-close" aria-label="Close" @click.stop.prevent="sheetOpen = false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5f7ef" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+        </a>
+        <a class="m-row" href="#why" @click="sheetOpen = false">{{ $t('navbar.why_nott') }}</a>
+        <a class="m-row" href="#ambassador" @click="sheetOpen = false">{{ $t('navbar.ambassador') }}</a>
+        <a class="m-row" href="#faq" @click="sheetOpen = false">{{ $t('navbar.faq') }}</a>
+        <a class="m-row" href="https://apps.apple.com/app/nott-academy/id6449980598" target="_blank" rel="noopener" @click="sheetOpen = false">
+          <svg viewBox="0 0 24 24" fill="#c1ff02"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.1.9-3.9.9s-2-.9-3.4-.9C5.9 6.7 4 8 3 10.1c-1.8 3.1-.5 7.8 1.3 10.4.9 1.3 1.9 2.6 3.3 2.6 1.3 0 1.8-.8 3.4-.8s2 .8 3.4.8 2.2-1.2 3.1-2.5c1-1.4 1.4-2.8 1.4-2.9-.1 0-2.6-1-2.6-3.9zM13.9 4.2c.7-.9 1.2-2.1 1.1-3.3-1.1 0-2.4.7-3.2 1.6-.7.8-1.3 2-1.1 3.2 1.2.1 2.5-.6 3.2-1.5z" /></svg>
+          App Store
+        </a>
+        <a class="m-row" href="https://play.google.com/store/apps/details?id=academy.nott" target="_blank" rel="noopener" @click="sheetOpen = false">
+          <svg viewBox="0 0 24 24" fill="#c1ff02"><path d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.1.1L13 12.1v-.2L3.7 2.3l-.1.1zM16.3 15.2l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.7 2.1-.1-.1zM15.9 15.6l-3.2-3.2L3.6 21.6c.4.4 1 .4 1.7.1l10.6-6.1zM15.9 8.4L5.3 2.3C4.6 2 4 2 3.6 2.4l9.1 9.1 3.2-3.1z" /></svg>
+          Play Store
+        </a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        components:{
-            JoinButton: () => import("@/components/common/JoinButton")
-        },
-        data() {
-            return {
-                isScrolled: false
-            }
-        },
-        computed: {
-            currentLocale() {
-                return this.$i18n.locales.find((i) => i.code === this.$i18n.locale);
-            },
-        },
-        methods: {
-            changeLocale() {
-                const code = this.currentLocale.code === "en" ? "tr" : "en";
-                this.$router.push(this.switchLocalePath(code));
-                localStorage.setItem("locale", code);
-                this.$vuetify.lang.current = code;
-            },
-            handleScroll() {
-                this.isScrolled = window.scrollY > 50;
-            }
-        },
-        mounted() {
-            window.addEventListener('scroll', this.handleScroll);
-        },
-        beforeDestroy() {
-            window.removeEventListener('scroll', this.handleScroll);
-        }
+export default {
+  components: {
+    JoinButton: () => import("@/components/common/JoinButton")
+  },
+  data() {
+    return {
+      isScrolled: false,
+      sheetOpen: false
     }
+  },
+  computed: {
+    currentLocale() {
+      return this.$i18n.locales.find((i) => i.code === this.$i18n.locale);
+    },
+  },
+  methods: {
+    changeLocale() {
+      const code = this.currentLocale.code === "en" ? "tr" : "en";
+      this.$router.push(this.switchLocalePath(code));
+      localStorage.setItem("locale", code);
+      this.$vuetify.lang.current = code;
+    },
+    handleScroll() {
+      this.isScrolled = window.scrollY > 40;
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+    this.handleScroll();
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-.nav-bar {
-    background: transparent !important;
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    padding: 1rem 2rem;
-    min-height: 72px !important;
-    height: 72px !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-bottom: 1px solid transparent;
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
 
-    &.nav-scrolled {
-        background: rgba(10, 10, 15, 0.8) !important;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-}
+  &.scrolled {
+    background: rgba(10, 10, 15, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
 
-.logo-link {
+  .wrap {
     display: flex;
     align-items: center;
-    transition: transform 0.3s ease;
+    justify-content: space-between;
+  }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  a {
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--mut);
+    transition: color 0.2s;
 
     &:hover {
-        transform: scale(1.05);
+      color: var(--text);
     }
+  }
 }
 
-.logo-img {
-    margin-left: 1rem;
+.lang-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--mut);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
 }
 
-.nav-bar-nav-icon {
+.nav-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--neon);
+  }
+}
+
+/* mobile sheet */
+.m-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  background: rgba(8, 8, 12, 0.6);
+  backdrop-filter: blur(8px);
+
+  &.open {
+    display: block;
+  }
+}
+
+.m-panel {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  left: 14px;
+  border-radius: var(--r-lg);
+  padding: 14px;
+  background: rgba(16, 16, 22, 0.96);
+  border: 1px solid var(--border-strong);
+
+  .m-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 14px;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text);
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    & + .m-row {
+      margin-top: 4px;
+    }
+  }
+
+  .m-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 960px) {
+  .nav-links {
     display: none;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background: rgba(193, 255, 2, 0.1) !important;
-    }
+  }
 }
 
-.lang-btn {
-    transition: all 0.3s ease;
-    border-radius: 50%;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.1) !important;
-        transform: scale(1.1);
-    }
-
-    .flag {
-        border-radius: 4px;
-    }
-}
-
-.mobile-menu {
-    background: rgba(15, 15, 25, 0.95) !important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px !important;
-    overflow: hidden;
-    min-width: 200px;
-}
-
-.mobile-menu-item {
+@media (max-width: 680px) {
+  .nav-burger {
     display: flex;
-    align-items: center;
-    padding: 12px 16px;
-    border-radius: 12px;
-    margin: 4px 0;
-    transition: all 0.2s ease;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-
-    &:hover {
-        background: rgba(193, 255, 2, 0.1);
-        color: #c1ff02;
-    }
-
-    span {
-        margin-left: 8px;
-    }
-}
-
-.join-btn {
-    margin-left: 0.5rem;
-}
-
-// Desktop styles
-@media only screen and (min-width: 601px) {
-    .nav-bar {
-        padding: 1rem 4rem;
-        min-height: 80px !important;
-        height: 80px !important;
-    }
-
-    .logo-img {
-        margin-left: 2rem;
-    }
-}
-
-// Mobile styles
-@media only screen and (max-width: 600px) {
-    .nav-bar-nav-icon {
-        display: flex;
-    }
-
-    .nav-bar {
-        padding: 0.5rem 1rem;
-
-        &.nav-scrolled {
-            padding: 0.5rem 1rem;
-        }
-    }
-
-    .logo-link {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .logo-img {
-        margin-left: 0;
-        width: 36px !important;
-        height: 36px !important;
-    }
-
-    .join-btn {
-        display: none;
-    }
-
-    .lang-btn {
-        margin-right: 0 !important;
-    }
+  }
+  .lang-pill,
+  .join-desktop {
+    display: none;
+  }
 }
 </style>

@@ -1,52 +1,45 @@
 <template>
-  <div class="faq-section section-padding">
-    <div class="section-header">
-      <h2 class="section-title">
-        {{ $t('faq.title') }} <span class="gradient-text">{{ $t('faq.subtitle') }}</span>
-      </h2>
-      <p class="section-subtitle">
-        {{ $t('faq.section_subtitle') }}
-      </p>
-    </div>
+  <section class="section sec-pad" id="faq">
+    <div class="wrap">
+      <div class="sec-head center" v-reveal>
+        <div class="eyebrow">{{ $t('faq.eyebrow') }}</div>
+        <h2 class="display sec-title">{{ $t('faq.title') }} <span class="neon-text">{{ $t('faq.subtitle') }}</span></h2>
+        <div class="title-rule"></div>
+      </div>
 
-    <div class="faq-container">
       <div class="faq-list">
         <div
           v-for="(item, i) in displayedItems"
-          :key="i"
+          :key="item.id"
           class="faq-item glass"
-          :class="{ 'faq-active': openIndex === i }"
-          @click="toggleFaq(i)"
+          :class="{ open: openIndex === i }"
         >
-          <div class="faq-header">
-            <span class="faq-question">{{ item.title }}</span>
-            <div class="faq-icon">
-              <v-icon :color="openIndex === i ? '#c1ff02' : 'rgba(255,255,255,0.5)'" size="24">
-                {{ openIndex === i ? 'mdi-minus' : 'mdi-plus' }}
-              </v-icon>
-            </div>
+          <div class="faq-q" @click="toggle(i)">
+            <span class="qn">{{ pad(item.id) }}</span>
+            <span class="qt">{{ item.title }}</span>
+            <span class="qi">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+            </span>
           </div>
-          <transition name="expand">
-            <div v-show="openIndex === i" class="faq-answer">
-              <p>{{ item.subtitle }}</p>
+          <transition
+            @enter="onEnter"
+            @after-enter="onAfterEnter"
+            @leave="onLeave"
+          >
+            <div v-if="openIndex === i" class="faq-a">
+              <div class="inner">{{ item.subtitle }}</div>
             </div>
           </transition>
         </div>
       </div>
 
-      <div v-if="items.length > initialDisplayCount" class="show-more-container">
-        <v-btn
-          class="btn-secondary"
-          @click="toggleShowAll"
-        >
+      <div class="faq-more">
+        <button class="btn btn-glass" type="button" @click="toggleShowAll">
           {{ showAll ? $t('faq.show_less') : $t('faq.show_more') }}
-          <v-icon right size="18">
-            {{ showAll ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
-          </v-icon>
-        </v-btn>
+        </button>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -55,203 +48,151 @@ export default {
     return {
       openIndex: null,
       showAll: false,
-      initialDisplayCount: 6,
-      items: [
-        { id: 1, title: this.$t("faq.1.title"), subtitle: this.$t("faq.1.subtitle") },
-        { id: 2, title: this.$t("faq.2.title"), subtitle: this.$t("faq.2.subtitle") },
-        { id: 3, title: this.$t("faq.3.title"), subtitle: this.$t("faq.3.subtitle") },
-        { id: 4, title: this.$t("faq.4.title"), subtitle: this.$t("faq.4.subtitle") },
-        { id: 5, title: this.$t("faq.5.title"), subtitle: this.$t("faq.5.subtitle") },
-        { id: 6, title: this.$t("faq.6.title"), subtitle: this.$t("faq.6.subtitle") },
-        { id: 7, title: this.$t("faq.7.title"), subtitle: this.$t("faq.7.subtitle") },
-        { id: 8, title: this.$t("faq.8.title"), subtitle: this.$t("faq.8.subtitle") },
-        { id: 9, title: this.$t("faq.9.title"), subtitle: this.$t("faq.9.subtitle") },
-        { id: 10, title: this.$t("faq.10.title"), subtitle: this.$t("faq.10.subtitle") },
-        { id: 11, title: this.$t("faq.11.title"), subtitle: this.$t("faq.11.subtitle") },
-      ],
+      collapsedCount: 5,
     }
   },
   computed: {
+    items() {
+      const out = [];
+      for (let i = 1; i <= 11; i++) {
+        out.push({ id: i, title: this.$t(`faq.${i}.title`), subtitle: this.$t(`faq.${i}.subtitle`) });
+      }
+      return out;
+    },
     displayedItems() {
-      return this.showAll ? this.items : this.items.slice(0, this.initialDisplayCount);
+      return this.showAll ? this.items : this.items.slice(0, this.collapsedCount);
     }
   },
   methods: {
-    toggleFaq(index) {
-      this.openIndex = this.openIndex === index ? null : index;
+    pad(n) {
+      return String(n).padStart(2, '0');
+    },
+    toggle(i) {
+      this.openIndex = this.openIndex === i ? null : i;
     },
     toggleShowAll() {
       this.showAll = !this.showAll;
-      if (!this.showAll) {
-        this.openIndex = null;
-      }
+      this.openIndex = null;
+    },
+    onEnter(el) {
+      el.style.maxHeight = '0px';
+      // force reflow then expand to content height
+      el.offsetHeight;
+      el.style.maxHeight = el.scrollHeight + 'px';
+    },
+    onAfterEnter(el) {
+      el.style.maxHeight = 'none';
+    },
+    onLeave(el) {
+      el.style.maxHeight = el.scrollHeight + 'px';
+      el.offsetHeight;
+      el.style.maxHeight = '0px';
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.faq-section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.section-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 2.5rem;
-  }
-}
-
-.section-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.faq-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 12px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .faq-item {
-  cursor: pointer;
-  padding: 0;
+  border-radius: var(--r);
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.3s;
 
-  &:hover {
+  &.open {
     border-color: rgba(193, 255, 2, 0.3);
   }
-
-  &.faq-active {
-    border-color: rgba(193, 255, 2, 0.4);
-    background: rgba(193, 255, 2, 0.05);
-  }
 }
 
-.faq-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 1.75rem;
-  gap: 1rem;
-}
-
-.faq-question {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1.4;
-  text-align: left;
-}
-
-.faq-icon {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+.faq-q {
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  gap: 18px;
+  padding: 24px 26px;
+  cursor: pointer;
+  user-select: none;
 
-  .faq-active & {
-    background: rgba(193, 255, 2, 0.15);
-    transform: rotate(180deg);
+  .qn {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--neon);
+    flex-shrink: 0;
   }
-}
-
-.faq-answer {
-  padding: 0 1.75rem 1.5rem;
-
-  p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.7;
-    margin: 0;
+  .qt {
+    flex: 1;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 1.12rem;
   }
-}
+  .qi {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    transition: background 0.3s, transform 0.3s;
 
-// Expand transition
-.expand-enter-active,
-.expand-leave-active {
-  transition: all 0.3s ease;
-  max-height: 300px;
-  opacity: 1;
-}
-
-.expand-enter,
-.expand-leave-to {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-// Show more button
-.show-more-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-// Mobile
-@media only screen and (max-width: 600px) {
-  .faq-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-
-  .section-header {
-    margin-bottom: 2.5rem;
-  }
-
-  .faq-header {
-    padding: 1.25rem 1.25rem;
-  }
-
-  .faq-question {
-    font-size: 1rem;
-  }
-
-  .faq-answer {
-    padding: 0 1.25rem 1.25rem;
-
-    p {
-      font-size: 0.9rem;
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--neon);
+      stroke-width: 2.2;
+      transition: transform 0.3s;
     }
   }
+}
 
-  .faq-icon {
-    width: 32px;
-    height: 32px;
+.faq-item.open {
+  .qi {
+    background: var(--neon-dim);
+
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .inner {
+    padding: 0 26px 24px 64px;
+    color: var(--mut);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+}
+
+.faq-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+@media (max-width: 680px) {
+  .faq-q {
+    padding: 20px;
+    gap: 14px;
+
+    .qt {
+      font-size: 1rem;
+    }
+  }
+  .faq-a .inner {
+    padding: 0 20px 20px 50px;
+    font-size: 0.95rem;
   }
 }
 </style>

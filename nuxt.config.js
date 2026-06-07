@@ -8,7 +8,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: "%s",
-    title: "Nott - Nott App",
+    title: "Nott — Think Green, Study Smart",
     htmlAttrs: {
       lang: "en",
     },
@@ -16,16 +16,24 @@ export default {
       { charset: "UTF-8" },
       {
         name: "viewport",
-        content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+        content: "width=device-width, initial-scale=1, viewport-fit=cover",
       },
       {
         hid: "description",
         name: "description",
-        content: "100% Trusted, Search, Find, Sell Nott.",
+        content: "Buy and sell notes with Nott. Join thousands of students saving money and boosting grades with sustainable digital education.",
       },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/icon.png" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/icon.png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap",
+      },
+    ],
   },
 
   loadingIndicator: {
@@ -39,6 +47,7 @@ export default {
   plugins: [
     { src: "~/plugins/notify", ssr: false },
     { src: "~/plugins/vue-confetti.js", ssr: false },
+    { src: "~/plugins/reveal.client.js", ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

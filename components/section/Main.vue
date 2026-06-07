@@ -1,530 +1,484 @@
 <template>
-  <div class="hero-section">
-    <div class="floating-blob blob-1"></div>
-    <div class="floating-blob blob-2"></div>
-
-    <v-row class="hero-content" align="center" justify="center">
-      <v-col cols="12" md="6" class="hero-left">
-        <div class="hero-text-container">
-          <h1 class="hero-title">
-            Think <span class="gradient-text">green</span>,
-          </h1>
-          <h1 class="hero-title">
-            Study <span class="gradient-text">smart</span>.
-          </h1>
-
-          <p class="hero-subtitle">
-            {{ $t('sections.main.subtitle') }}
-          </p>
-
-          <div class="hero-buttons">
-            <a href="https://app.nott.app/" target="_blank" class="btn-link">
-              <v-btn class="btn-primary" large>
-                {{ $t('sections.main.get_started') }}
-              </v-btn>
-            </a>
-            <a href="#why-section" class="btn-link">
-              <v-btn class="btn-secondary" large>
-                {{ $t('sections.main.learn_more') }}
-              </v-btn>
-            </a>
+  <header class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy" v-reveal>
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <span>{{ $t('sections.main.badge') }}</span>
           </div>
-
-          <div class="trust-badges">
-            <div class="trust-badge">
-              <v-icon class="badge-icon" small>mdi-account-group</v-icon>
-              <span class="badge-value">10K+</span>
-              <span>{{ $t('sections.main.users') }}</span>
-            </div>
-            <div class="trust-badge">
-              <v-icon class="badge-icon" small>mdi-star</v-icon>
-              <span class="badge-value">4.8</span>
-              <span>{{ $t('sections.main.rating') }}</span>
-            </div>
-            <div class="trust-badge">
-              <v-icon class="badge-icon" small>mdi-school</v-icon>
-              <span class="badge-value">50+</span>
-              <span>{{ $t('sections.main.universities') }}</span>
-            </div>
+          <h1 class="display hero-title">
+            Think <span class="neon-text">green</span>,<br />
+            Study <span class="stroke">smart</span>.
+          </h1>
+          <p class="hero-sub">{{ $t('sections.main.subtitle') }}</p>
+          <div class="hero-cta">
+            <a class="btn btn-neon" href="https://app.nott.app/" target="_blank" rel="noopener">
+              <span>{{ $t('sections.main.get_started') }}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a class="btn btn-glass" href="#why">{{ $t('sections.main.learn_more') }}</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-chip"><span class="v">10K+</span><span class="l">{{ $t('sections.main.students') }}</span></div>
+            <div class="stat-chip"><span class="v">4.8★</span><span class="l">{{ $t('sections.main.app_rating') }}</span></div>
+            <div class="stat-chip"><span class="v">50+</span><span class="l">{{ $t('sections.main.universities') }}</span></div>
           </div>
         </div>
-      </v-col>
 
-      <v-col cols="12" md="6" class="hero-right">
-        <div class="phone-wrapper">
+        <div class="hero-visual" v-reveal>
           <div class="phone-glow"></div>
-
-          <div class="phone-mockup animate-float">
+          <div class="phone">
             <div class="phone-screen">
-              <v-img
-                :src="require('~/assets/images/logo/icon_white.svg')"
-                contain
-                width="80"
-                height="80"
-                class="phone-logo"
-              />
-              <div class="phone-text">
-                <span class="phone-brand">NOTT</span>
-                <span class="phone-tagline mb-3">{{ $t('sections.main.your_notes') }}</span>
+              <div class="app">
+                <div class="app-top">
+                  <div>
+                    <div class="k">Tue · Week 11</div>
+                    <div class="h">Feed.</div>
+                  </div>
+                  <div class="ava">E</div>
+                </div>
+                <div class="app-feat">
+                  <div class="cover">
+                    <div class="big">A</div>
+                    <div class="t">Anatomy —<br />Upper Limb</div>
+                  </div>
+                  <div class="meta"><span class="s">@elif.k · MED 201</span><span class="p">₺45</span></div>
+                </div>
+                <div class="app-list">
+                  <div class="app-row"><span class="n">01</span><span class="nm">Organic Chemistry II</span><span class="pr">₺29</span></div>
+                  <div class="app-row"><span class="n">02</span><span class="nm">Microeconomics Final</span><span class="pr">₺60</span></div>
+                  <div class="app-row"><span class="n">03</span><span class="nm">Differential Equations</span><span class="pr">₺35</span></div>
+                </div>
+                <div class="app-nav">
+                  <span class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v9h14v-9" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                  <span><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3-3" stroke-linecap="round" /></svg></span>
+                  <span class="plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" /></svg></span>
+                  <span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-4 3z" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                  <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2" /><path d="M5.5 20c.6-3.5 3.2-5.2 6.5-5.2s5.9 1.7 6.5 5.2" stroke-linecap="round" /></svg></span>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="floating-card card-1 glass">
-            <v-icon color="#c1ff02" size="24">mdi-leaf</v-icon>
-            <span>{{ $t('sections.main.eco_friendly') }}</span>
+          <div class="float-card glass fc-1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c1ff02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-7 4-13 14-14-1 9-6 13-12 13M5 21c0-3 1-5 3-7" /></svg>
+            {{ $t('sections.main.eco_friendly') }}
           </div>
-          <div class="floating-card card-2 glass">
-            <v-icon color="#c1ff02" size="24">mdi-file-document-multiple</v-icon>
-            <span>{{ $t('sections.main.notes_count') }}</span>
+          <div class="float-card glass fc-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c1ff02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7zM7 3H5v18h2M14 3v4h4" /></svg>
+            <span><span class="num">10K+</span> {{ $t('sections.main.notes') }}</span>
           </div>
         </div>
-      </v-col>
-    </v-row>
-
-    <div class="scroll-indicator">
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
       </div>
-      <span>{{ $t('sections.main.scroll_explore') }}</span>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
-export default {
-  mounted() {
-    // Simple fade-in animation on mount
-    const elements = document.querySelectorAll('.hero-left, .hero-right');
-    elements.forEach((el, index) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      setTimeout(() => {
-        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }, 200 + (index * 200));
-    });
-  }
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>
-.hero-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.hero {
   position: relative;
-  overflow: hidden;
-  padding: 120px 0 60px;
+  padding: 150px 0 90px;
+  overflow: clip;
 }
 
-.hero-content {
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-1 {
+  width: 560px;
+  height: 560px;
+  background: rgba(193, 255, 2, 0.22);
+  top: -200px;
+  right: -160px;
+  animation: drift 22s ease-in-out infinite;
+}
+.blob-2 {
+  width: 420px;
+  height: 420px;
+  background: rgba(193, 255, 2, 0.14);
+  bottom: -160px;
+  left: -140px;
+  animation: drift 28s ease-in-out infinite reverse;
+}
+
+.hero-grid {
   position: relative;
   z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 40px;
+  align-items: center;
 }
 
-.hero-left {
-  padding-right: 2rem;
-}
-
-.hero-text-container {
-  max-width: 600px;
-}
-
-.hero-title {
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1.1;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 34px;
+  padding: 0 16px;
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
-}
+  color: var(--mut);
+  margin-bottom: 26px;
 
-.hero-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin: 1.5rem 0 2.5rem;
-  max-width: 480px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-
-  .btn-link {
-    text-decoration: none;
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon);
   }
 }
 
-.trust-badges {
+.hero-title {
+  font-size: clamp(3.2rem, 7vw, 6rem);
+
+  .stroke {
+    -webkit-text-stroke: 1.5px rgba(245, 247, 239, 0.55);
+    color: transparent;
+  }
+}
+
+.hero-sub {
+  font-size: 1.18rem;
+  color: var(--mut);
+  line-height: 1.6;
+  max-width: 460px;
+  margin: 26px 0 34px;
+}
+
+.hero-cta {
   display: flex;
-  gap: 1rem;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 42px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
-// Phone mockup
-.hero-right {
+.stat-chip {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 20px 14px 18px;
+  border-radius: var(--r-sm);
+  border-left: 2px solid var(--neon);
+  background: var(--surface);
+
+  .v {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .l {
+    font-size: 12.5px;
+    color: var(--mut);
+  }
 }
 
-.phone-wrapper {
+/* hero visual */
+.hero-visual {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 560px;
 }
 
 .phone-glow {
   position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(193, 255, 2, 0.3) 0%, transparent 70%);
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
-  filter: blur(40px);
-  z-index: -1;
+  background: radial-gradient(circle, rgba(193, 255, 2, 0.32), transparent 68%);
+  filter: blur(36px);
 }
 
-.phone-mockup {
+.phone {
   position: relative;
-  width: 280px;
-  height: 580px;
-  background: linear-gradient(145deg, #1a1a2e, #16162a);
-  border-radius: 45px;
-  padding: 12px;
-  box-shadow:
-    0 50px 100px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  width: 290px;
+  height: 590px;
+  border-radius: 46px;
+  padding: 11px;
+  background: linear-gradient(150deg, #181820, #101016);
+  box-shadow: 0 50px 110px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  z-index: 2;
+  animation: floaty 6s ease-in-out infinite;
 
   &::before {
     content: '';
     position: absolute;
-    top: 20px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 25px;
+    width: 90px;
+    height: 26px;
     background: #0a0a0f;
-    border-radius: 20px;
-    z-index: 10;
-  }
-
-  .phone-screen {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, #0a0a0f 0%, #121220 100%);
-    border-radius: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-
-    .phone-logo {
-      opacity: 0.9;
-    }
-
-    .phone-text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-
-      .phone-brand {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #c1ff02;
-        letter-spacing: 0.1em;
-      }
-
-      .phone-tagline {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.6);
-      }
-    }
+    border-radius: 16px;
+    z-index: 5;
   }
 }
 
-// Floating cards
-.floating-card {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 18px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  z-index: 10;
-
-  &.card-1 {
-    top: 80px;
-    right: -40px;
-    animation: float 5s ease-in-out infinite;
-  }
-
-  &.card-2 {
-    bottom: 120px;
-    left: -30px;
-    animation: float 6s ease-in-out infinite reverse;
-  }
-}
-
-// Scroll indicator
-.scroll-indicator {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  span {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
-  }
-}
-
-.scroll-mouse {
-  width: 24px;
-  height: 38px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0b0b10, #0e0e16);
   position: relative;
-
-  .scroll-wheel {
-    width: 4px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 2px;
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: scroll-animation 2s ease-in-out infinite;
-  }
 }
 
-@keyframes scroll-animation {
-  0%, 100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    opacity: 0.3;
-    transform: translateX(-50%) translateY(10px);
-  }
+.app {
+  padding: 52px 16px 0;
+  height: 100%;
+  font-family: var(--font);
 }
+.app-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-// Floating blobs
-.floating-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  pointer-events: none;
-
-  &.blob-1 {
-    width: 500px;
-    height: 500px;
-    background: rgba(193, 255, 2, 0.4);
-    top: -150px;
-    right: -150px;
-    animation: blob-move 20s ease-in-out infinite;
+  .k {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--neon);
+    text-transform: uppercase;
   }
-
-  &.blob-2 {
-    width: 400px;
-    height: 400px;
-    background: rgba(193, 255, 2, 0.25);
-    bottom: -100px;
-    left: -100px;
-    animation: blob-move 25s ease-in-out infinite reverse;
+  .h {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin-top: 3px;
   }
-}
-
-@keyframes blob-move {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -40px) scale(1.1); }
-  50% { transform: translate(-30px, 30px) scale(0.95); }
-  75% { transform: translate(40px, 20px) scale(1.05); }
-}
-
-// Tablet
-@media only screen and (max-width: 960px) {
-  .hero-section {
-    padding: 100px 0 40px;
-  }
-
-  .hero-content {
-    flex-direction: column-reverse;
-  }
-
-  .hero-left {
-    padding-right: 0;
-    text-align: center;
-  }
-
-  .hero-text-container {
-    max-width: 100%;
+  .ava {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: var(--neon);
+    color: #0a0a0f;
     display: flex;
-    flex-direction: column;
     align-items: center;
-  }
-
-  .hero-subtitle {
-    text-align: center;
-  }
-
-  .hero-buttons {
     justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
   }
+}
+.app-feat {
+  margin-top: 13px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
 
-  .trust-badges {
+  .cover {
+    height: 96px;
+    background: linear-gradient(135deg, #1b2a16, #0d130a);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+
+    .big {
+      position: absolute;
+      right: -8px;
+      top: -22px;
+      font-size: 110px;
+      font-weight: 700;
+      color: rgba(193, 255, 2, 0.08);
+      line-height: 1;
+    }
+    .t {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      z-index: 1;
+      line-height: 1.05;
+    }
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 11px;
+
+    .s {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--mut);
+    }
+    .p {
+      background: var(--neon);
+      color: #0a0a0f;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 6px;
+    }
+  }
+}
+.app-list {
+  margin-top: 12px;
+}
+.app-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+
+  .n {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--neon);
+    width: 16px;
+  }
+  .nm {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pr {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+.app-nav {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 16px;
+  height: 52px;
+  border-radius: 18px;
+  background: rgba(18, 18, 24, 0.8);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--mut-2);
+    fill: none;
+    stroke-width: 1.8;
+  }
+  .on svg {
+    stroke: var(--neon);
+  }
+  .plus {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+    background: var(--neon);
+    display: flex;
+    align-items: center;
     justify-content: center;
-  }
+    box-shadow: 0 0 16px rgba(193, 255, 2, 0.5);
+    margin-top: -8px;
 
-  .phone-mockup {
-    width: 220px;
-    height: 460px;
-    border-radius: 38px;
-    margin-bottom: 2rem;
-
-    &::before {
-      width: 60px;
-      height: 20px;
-      top: 15px;
+    svg {
+      stroke: #0a0a0f;
+      stroke-width: 2.4;
     }
-
-    .phone-screen {
-      border-radius: 28px;
-
-      .phone-text {
-        .phone-brand {
-          font-size: 2rem;
-        }
-      }
-    }
-  }
-
-  .floating-card {
-    display: none;
-  }
-
-  .scroll-indicator {
-    display: none;
   }
 }
 
-// Mobile
-@media only screen and (max-width: 600px) {
-  .hero-section {
-    padding: 80px 0 30px;
-    min-height: auto;
+.float-card {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 13.5px;
+
+  svg {
+    width: 22px;
+    height: 22px;
   }
 
-  .hero-title {
-    font-size: 2.8rem;
+  &.fc-1 {
+    top: 64px;
+    right: 4px;
+    animation: floaty 5s ease-in-out infinite;
   }
-
-  .hero-subtitle {
-    font-size: 1rem;
-    margin: 1rem 0 2rem;
+  &.fc-2 {
+    bottom: 96px;
+    left: 0;
+    animation: floaty 6.5s ease-in-out infinite reverse;
   }
+  .num {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--neon);
+  }
+}
 
-  .hero-buttons {
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .hero-visual {
+    min-height: 480px;
+    order: -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    padding: 120px 0 70px;
+  }
+  .hero-cta {
     flex-direction: column;
-    width: 100%;
-    padding: 0 1rem;
 
-    .btn-link {
+    .btn {
       width: 100%;
-
-      .v-btn {
-        width: 100%;
-      }
+      justify-content: center;
     }
   }
-
-  .trust-badges {
-    gap: 0.5rem;
-
-    .trust-badge {
-      padding: 8px 12px;
-      font-size: 12px;
-    }
+  .hero-visual {
+    min-height: 440px;
   }
-
-  .phone-mockup {
-    width: 180px;
-    height: 380px;
-    border-radius: 32px;
-
-    &::before {
-      width: 50px;
-      height: 16px;
-      top: 12px;
-    }
-
-    .phone-screen {
-      border-radius: 24px;
-
-      .phone-logo {
-        width: 50px !important;
-        height: 50px !important;
-      }
-
-      .phone-text {
-        .phone-brand {
-          font-size: 1.5rem;
-        }
-
-        .phone-tagline {
-          font-size: 0.7rem;
-        }
-      }
-    }
+  .phone {
+    width: 240px;
+    height: 490px;
   }
-
-  .floating-blob {
-    &.blob-1 {
-      width: 300px;
-      height: 300px;
-      top: -100px;
-      right: -100px;
-    }
-
-    &.blob-2 {
-      width: 250px;
-      height: 250px;
-    }
+  .float-card.fc-1 {
+    right: -6px;
   }
 }
 </style>

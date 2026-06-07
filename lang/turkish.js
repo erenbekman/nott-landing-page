@@ -1,6 +1,9 @@
 export default {
   navbar: {
     login: 'Giriş Yap',
+    why_nott: 'Neden Nott',
+    ambassador: 'Elçilik',
+    faq: 'SSS',
     signup: {
       google: 'Google ile Giriş Yap',
       apple: 'Apple ile Giriş Yap',
@@ -9,19 +12,23 @@ export default {
   sections: {
     main: {
       signup: 'Buradan Kaydol',
-      subtitle: 'Bizimle notlarını al ve sat. Paradan tasarruf eden ve notlarını yükselten binlerce öğrenciye katıl.',
+      badge: 'Sürdürülebilir not pazarı',
+      subtitle: 'Bizimle not al ve sat. Para biriktirip notlarını yükselten binlerce öğrenciye katıl — sürdürülebilir yoldan.',
       get_started: 'Ücretsiz Başla',
       learn_more: 'Daha Fazla',
       users: 'Kullanıcı',
+      students: 'Öğrenci',
       rating: 'Puan',
+      app_rating: 'Puan',
       universities: 'Üniversite',
       eco_friendly: 'Çevre Dostu',
       notes_count: '10K+ Not',
+      notes: 'Not',
       your_notes: 'Senin Notların, Senin Başarın',
       scroll_explore: 'Keşfetmek için kaydır'
     },
     supporter: {
-      title: 'Destekleyenler',
+      title: 'Nott Destekçileri',
       stats: {
         trees_saved: 'Ağaç Kurtarıldı',
         notes_shared: 'Not Paylaşıldı',
@@ -29,6 +36,7 @@ export default {
       }
     },
     why: {
+      eyebrow: 'Misyon',
       section_title: 'Neden',
       section_subtitle: 'Öğrencilerin bilgi paylaşma ve erişme biçimini nasıl devrimleştirdiğimizi keşfedin.',
       what: {
@@ -50,6 +58,7 @@ export default {
       }
     },
     contact: {
+      cta_eyebrow: 'Para biriktir · notları yükselt',
       title: 'Bugün bize katılın.',
       subtitle: 'Para Tasarrufu Yapın, Notlarınızı Yükseltin.',
       about: "Hakkımızda",
@@ -75,10 +84,21 @@ export default {
       section_title: 'Bir',
       section_title_highlight: 'Nott',
       section_title_end: 'Elçisi Ol',
+      intro: 'Kendi okulunda Nott\'u temsil et, topluluğu büyüt ve getirdiğin her öğrenci için ödüllendiril.',
       benefits: {
         commission: 'Komisyon Kazan',
         rewards: 'Özel Ödüller',
         community: 'Topluluğa Katıl'
+      },
+      benefit_desc: {
+        commission: 'Sağladığın her not satışından pay.',
+        rewards: 'DP puanları, hediyeler ve iş ortağı avantajları.',
+        community: 'Kampüs liderlerinden oluşan bir ağ.'
+      },
+      pill: {
+        commission: 'Komisyon',
+        rewards: 'Ödüller',
+        community: 'Topluluk'
       },
       form: {
         join: 'Sende Bize Katıl, Elçi Ol!',
@@ -97,6 +117,7 @@ export default {
     }
   },
   faq: {
+    eyebrow: 'Bilmen gereken her şey',
     title: 'Sıkça Sorulan',
     subtitle: 'Sorular',
     section_subtitle: 'Nott hakkında bilmeniz gereken her şey',
